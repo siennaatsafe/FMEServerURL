@@ -1,0 +1,632 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        /Library/FME/2023.0/fme "/Users/devi.yip/Desktop/Workspaces/Concatenate published parameters.fmw"
+#          --PARAMETER ""
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY="Manipulators"
+#!   DESCRIPTION="&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This workspace shows how to configure a published parameter to include the value of another published or private parameter. This example shows how you can configure a workspace to prompt for a value and then use that value as part of a database where clause. &lt;/p&gt;&#10;&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If the where clause looks like the following:&lt;br/&gt;ROAD_CATEGORY = &apos;MAJOR&apos;&lt;/p&gt;&#10;&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Then a published parameter would be created to prompt for the the value MAJOR. That parameter would then be referenced within a private parameter to create the full where clause. The private parameter value would appear like so:&lt;br/&gt;ROAD_CATEGORY = &apos;MAJOR&apos; &lt;/p&gt;&#10;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;/&gt;&#10;"
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="1032 93"
+#!   DOC_TOP_LEFT="79 -171"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="23097"
+#!   FME_BULK_MODE_THRESHOLD=""
+#!   FME_DOCUMENT_GUID="9ae46a17-e9d3-470a-99e8-c7d083139b78"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Datum"
+#!   FME_NAMES_ENCODING="UTF-8"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY="2011-01-10,Aaron&lt;space&gt;Koning,Created"
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2023.0.0.0"
+#!   LAST_SAVE_DATE="2022-08-10T15:36:02"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="39"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="NO"
+#!   TITLE="Concatenate published parameters"
+#!   USAGE="&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Follow these instructions to try out the workspaces:&lt;/p&gt;&#10;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&#10;    &lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Click File &amp;gt; Prompt and Run &amp;gt; enter &apos;MAJOR&apos;. &lt;/li&gt;&#10;    &lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Run it again and enter &apos;MINOR&apos;. Note the different number of features read. &lt;/li&gt;&#10;    &lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;In the Navigator, expand the road_attrs Reader &amp;gt; Parameters, right click the WHERE Clause parameter and select Edit Definition to see how it is configured. &lt;/li&gt;&#10;&lt;/ul&gt;&#10;"
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="-354.22 0"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="83"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="MDB_ADO"
+#!   DATASET="$(FME_MF_DIR)Concatenate published parameters/1/GPS/road_attrs.mdb"
+#!   KEYWORD="MDB_ADO_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="60"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE="mdb_sql_statement &quot;&quot; mdb_where_clause &quot;&quot;"
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename text(50) fme_color text(50) fme_dataset text(50) fme_feature_type text(50) fme_fill_color text(50) fme_geometry fme_char(50) fme_primary_axis double fme_rotation double fme_secondary_axis double fme_start_angle double fme_sweep_angle double fme_text_size double fme_text_string text(50) fme_type text(50) multi_reader_full_id long multi_reader_id long multi_reader_keyword text(50) multi_reader_type text(50)"
+#!   DEFLINE_PARMS="&quot;GUI OPTIONAL TEXT mdb_where_clause WHERE Clause&quot; &quot;&quot; &quot;GUI OPTIONAL TEXT mdb_sql_statement SELECT Statement&quot; &quot;&quot; "
+#!   ATTR_INDEX_TYPES="indexed unique"
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   FTTR_TYPE="LISTBOX_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="6468"
+#!   COORDSYS=""
+#!   FEATURE_TYPES=""
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="MIME_TYPE"
+#!   VALUE="application/x-msaccess ADD_DISPOSITION"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="yesno"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="memo"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="memo"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="memo"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="memo"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="hyperlink"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="replicationid"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="oleobject"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="integer"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="byte"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="long"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="long"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="autonumber"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="datetime"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="decimal(width,decimal)"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="single"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="double"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="decimal(10,0)"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="decimal(19,0)"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="decimal(20,0)"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="currency"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text(width)"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text(width)"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text(width)"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="text(width)"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="byte"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="MDB_ADO"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="MDB_ADO"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="db_none"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="MDB_ADO"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="major_roads"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="3"
+#!   FEAT_GEOMTYPE="db_none"
+#!   POSITION="79 -100"
+#!   BOUNDING_RECT="79 -100 430 71"
+#!   ORDER="2"
+#!   COLLAPSED="true"
+#!   KEYWORD="MDB_ADO_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   MERGE_FILTER=""
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="false"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="ROAD_ID" ATTR_TYPE="text(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="TYPE_CODE" ATTR_TYPE="text(8)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="PRIMARY_DIRECTION" ATTR_TYPE="text(4)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="ROAD_CATEGORY" ATTR_TYPE="text(20)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <FEAT_ATTRIBUTE ATTR_NAME="ROAD_NAME" ATTR_TYPE="text(40)" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="mdb_sql_statement" PARM_VALUE=""/>
+#!     <DEFLINE_PARM PARM_NAME="mdb_where_clause" PARM_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <SERVICES>
+#! <SERVICE
+#!   NAME="fmejobsubmitter"
+#! >
+#! <PROPERTIES>
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="ADVANCED"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="FAILURE_TOPICS"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="HTTP_DATASET"
+#!   VALUE="MDB_ADO_1"
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="NOTIFICATION_WRITER"
+#!   VALUE=""
+#! />
+#! <PROPERTY
+#!   CATEGORY="FMEUSERPROPDATA"
+#!   NAME="SUCCESS_TOPICS"
+#!   VALUE=""
+#! />
+#! </PROPERTIES>
+#! </SERVICE>
+#! </SERVICES>
+#! <REPOSITORY
+#!   NAME="A"
+#! />
+#! <ITEM
+#!   NAME="Folder.fmw"
+#! />
+#! <MODIFICATIONS>
+#! <MODIFICATION
+#!   UID=":DatasetMgr_MDB_ADO_1:SourceDataset_MDB_ADO_1"
+#!   VALUE="$(FME_MF_DIR)1/GPS/road_attrs.mdb"
+#! />
+#! <MODIFICATION
+#!   UID=":WBDoc:DESTINATION_ROUTING_FILE"
+#!   VALUE=""
+#! />
+#! <MODIFICATION
+#!   UID=":WBDoc:LOG_FILE"
+#!   VALUE=""
+#! />
+#! </MODIFICATIONS>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="MDB_ADO_1"
+#!   OVERRIDE="-MDB_ADO_1_DATASET"
+#!   DATASET="MDB_ADO_1/road_attrs.mdb"
+#! />
+#! </READER_DATASETS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI DIRNAME_SRC PARAMETER Select a File"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImFsbG93VVJMIjpmYWxzZSwiZGVmYXVsdFZhbHVlIjoiIiwiaGlkZGVuIjpmYWxzZSwiaXRlbXNUb1NlbGVjdCI6ImZvbGRlcnMiLCJuYW1lIjoiUEFSQU1FVEVSIiwicHJvbXB0IjoiU2VsZWN0IGEgRmlsZSIsInJlcXVpcmVkIjp0cnVlLCJzZWxlY3RNdWx0aXBsZSI6ZmFsc2UsInR5cGUiOiJmaWxlIiwidmFsaWRhdGVFeGlzdGVuY2UiOnRydWUsInZhbHVlVHlwZSI6InN0cmluZyJ9XX0="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="PARAMETER" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI DIRNAME_SRC PARAMETER Select a File"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="1"
+#!   TYPE="Logger"
+#!   VERSION="2"
+#!   POSITION="681 -78"
+#!   BOUNDING_RECT="681 -78 430 71"
+#!   ORDER="1"
+#!   PARMS_EDITED="false"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="12139"
+#! >
+#!     <XFORM_PARM PARM_NAME="FEATURE_TYPE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="MAXCOORDS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MAXFEATS" PARM_VALUE="20"/>
+#!     <XFORM_PARM PARM_NAME="MESSAGE" PARM_VALUE="Feature is:"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE="-"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="Logger"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="4"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="1"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 39
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_MDB_ADO_1,MDB_ADO_IN_PASSWORD_MDB_ADO_1,MDB_ADO_IN_WHERE_CLAUSE_MDB_ADO_1,MDB_ADO_IN_READ_CACHE_SIZE_MDB_ADO_1
+# ============================================================================
+DEFAULT_MACRO PARAMETER 
+
+# ============================================================================
+INCLUDE [ if {{$(PARAMETER$encode)} == {}} { puts_real {Parameter 'PARAMETER' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} MDB_ADO
+MULTI_READER_KEYWORD{0} MDB_ADO_1
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "MDB_ADO_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER MDB_ADO MDB_ADO_1
+# ============================================================================
+# First get the dataset for the database. For Access, it's the database file.
+# For now we'll use whatever they had when they generated this mapping file,
+# and not reprompt
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_MDB_ADO_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER MDB_ADO MDB_ADO_1
+DEFAULT_MACRO SourceDataset_MDB_ADO_1 $(FME_MF_DIR)Concatenate published parameters/1/GPS/road_attrs.mdb
+GUI MULTIFILE SourceDataset_MDB_ADO_1 Access_Database_Files(*.mdb;*.accdb)|*.mdb;*.accdb|All_files(*.*)|*.* Source Microsoft Access Database File(s):
+# ===========================================================================
+# The ADO provider in use. For Access, this is always MDB_ADO
+DEFAULT_MACRO MDB_ADO_IN_PROVIDER_TYPE_MDB_ADO_1 MDB_ADO
+MDB_ADO_1_PROVIDER_TYPE "$(MDB_ADO_IN_PROVIDER_TYPE_MDB_ADO_1)"
+# ===========================================================================
+# Optional Password
+DEFAULT_MACRO MDB_ADO_IN_PASSWORD_MDB_ADO_1 
+MDB_ADO_1_PASSWORD "$(MDB_ADO_IN_PASSWORD_MDB_ADO_1)"
+GUI OPTIONAL PASSWORD MDB_ADO_IN_PASSWORD_MDB_ADO_1 Password:
+# ===========================================================================
+# Optional global WHERE clause
+DEFAULT_MACRO MDB_ADO_IN_WHERE_CLAUSE_MDB_ADO_1 ROAD_CATEGORY = 'MAJOR'
+MDB_ADO_1_WHERE_CLAUSE "$(MDB_ADO_IN_WHERE_CLAUSE_MDB_ADO_1)"
+GUI OPTIONAL TEXT MDB_ADO_IN_WHERE_CLAUSE_MDB_ADO_1 WHERE Clause:
+# ============================================================================
+# This keyword controls how many records to retrieve at one time into local
+# memory from the provider
+DEFAULT_MACRO MDB_ADO_IN_READ_CACHE_SIZE_MDB_ADO_1 10
+GUI OPTIONAL TEXT MDB_ADO_IN_READ_CACHE_SIZE_MDB_ADO_1 Number Of Records To Fetch At A Time:
+MDB_ADO_1_READ_CACHE_SIZE $(MDB_ADO_IN_READ_CACHE_SIZE_MDB_ADO_1)
+MDB_ADO_1_DATASET "$(SourceDataset_MDB_ADO_1)"
+MDB_ADO_1_GENERATE_FME_BUILD_NUM 6468
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)Concatenate published parameters.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Datum
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING UTF-8
+FME_BULK_MODE_THRESHOLD 
+LAST_SAVE_BUILD "FME 2023.0.0.0"
+MAPPING_FILE_ID Concatenate<space>published<space>parameters
+DEFAULT_MACRO DATASET_KEYWORD_MDB_ADO_1 MDB_ADO_1
+# -------------------------------------------------------------------------
+
+MDB_ADO_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME Concatenate published parameters
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+MDB_ADO_1_DEF major_roads   mdb_sql_statement            ""   mdb_where_clause             ""   ROAD_ID                      text(8)   TYPE_CODE                    text(8)   PRIMARY_DIRECTION            text(4)   ROAD_CATEGORY                text(20)   ROAD_NAME                    text(40)
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_MDB_ADO_1)   INPUT FEATURE_TYPE *    ROUTE MDB_ADO MDB_ADO_1::major_roads multi_reader_keyword,$(DATASET_KEYWORD_MDB_ADO_1) TO FME_GENERIC ::major_roads ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+MDB_ADO_1_MERGE_DEF MDB_ADO_1::major_roads EXACT major_roads
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "major_roads_MDB_ADO_1 Splitter"    INPUT FEATURE_TYPE major_roads    OUTPUT FEATURE_TYPE major_roads_MDB_ADO_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory    FACTORY_NAME Logger_Logger    INPUT  FEATURE_TYPE major_roads_MDB_ADO_1    OUTPUT FEATURE_TYPE * @FeatureType("") @Log("Logger: Feature is:",20,20) @FeatureType(__NUKE_LOGGED__)
+FACTORY_DEF * TeeFactory    FACTORY_NAME Logger_Nuker    INPUT FEATURE_TYPE __NUKE_LOGGED__
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
